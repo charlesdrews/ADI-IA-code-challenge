@@ -1,6 +1,6 @@
-# Android Development IA Code Challenge
+# Android Development Instructional Support Code Challenge
 
-Thanks for your interest in becoming an IA for General Assembly's Android Development course! The following code challenge is designed to test your ability to troubleshoot and repair a broken Android app.  
+Thanks for your interest in becoming an IA or TA for General Assembly's Android Development course! The following code challenge is designed to test your ability to troubleshoot and repair a broken Android app.  
 
 ## Technical Specs
 
