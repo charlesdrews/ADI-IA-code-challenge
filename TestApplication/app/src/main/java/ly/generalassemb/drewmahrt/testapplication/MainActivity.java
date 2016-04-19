@@ -5,16 +5,19 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    // Rather than hardcode the key when adding the position of the item clicked to the intent
+    // below, use this constant to avoid errors if the hardcoded value is changed.
+    public static final String POSITION_KEY = "position_key";
+
     String [] mStatesArray;
     BaseAdapter mAdapter;
 
@@ -35,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mStatesArray = new String[]{};
+
+                // The original code did not notify the adapter after changing the underlying data.
+                // To do this, the notifyDataSetChanged() method must be called, then the adapter
+                // will update the list view to reflect the change.
+                mAdapter.notifyDataSetChanged();
             }
         });
 
@@ -65,10 +73,15 @@ public class MainActivity extends AppCompatActivity {
                 view = convertView;
 
                 TextView text1 = (TextView) view.findViewById(R.id.state);
-                TextView text2 = (TextView) view.findViewById(R.id.state);
+
+                // This extra text view is not necessary
+                //TextView text2 = (TextView) view.findViewById(R.id.state);
 
                 text1.setText(mStatesArray[position]);
-                text2.setText(mStatesArray[position]);
+
+                // This extra text view is not necessary
+                //text2.setText(mStatesArray[position]);
+
                 return view;
             }
         };
@@ -79,6 +92,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this,PositionActivity.class);
+
+                // the original code did not send the position of the item clicked to the
+                // PositionActivity. In order to do that, the data must be added to the
+                // intent as an extra. In this case I added 1 so that the position shown in
+                // PositionActivity is based at 1 rather than 0 to be more user friendly.
+                intent.putExtra(POSITION_KEY, position + 1);
+
                 startActivity(intent);
             }
         });

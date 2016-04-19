@@ -1,3 +1,16 @@
+I updated the code and uploaded a video of the working app as working-app-video.mp4 in the root directory of this repo.
+
+Here is a quick summary of the changes I made to the code:
+
+  * Added the integer `position` of the item clicked as an extra to the intent being passed to PositionActivity
+  * Called `notifyDataSetChanged()` on `mAdapter` after updating `mStatesArray` to be an empty array
+  * Commented out the second, unnecessary text view in the list view item in both list_view_item.xml and in MainActivity
+  * Added a constant in MainActivity to serve as the key for the `position` intent extra to avoid using a hardcoded key which could cause an error if updated in on place (MainActivity or PositionActivity) but not the other
+
+Thanks,
+Charlie
+
+
 # Android Development Instructional Support Code Challenge
 
 Thanks for your interest in becoming an IA or TA for General Assembly's Android Development course! The following code challenge is designed to test your ability to troubleshoot and repair a broken Android app.  
