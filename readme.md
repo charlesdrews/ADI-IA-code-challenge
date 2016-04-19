@@ -8,8 +8,7 @@ Here is a quick summary of the changes I made to the code:
   * Added a constant in MainActivity to serve as the key for the `position` intent extra to avoid using a hardcoded key which could cause an error if updated in on place (MainActivity or PositionActivity) but not the other
 
 Thanks,
-
-Charlie
+<br>Charlie
 
 
 # Android Development Instructional Support Code Challenge
